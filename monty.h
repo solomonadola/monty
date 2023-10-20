@@ -98,6 +98,11 @@ void queue(stack_t **head, unsigned int counter);
 
 char *g_int(int m);
 char **strtow(char *str, char *delim);
+int is_delim(char ch, char *delims);
+int get_word_length(char *str, char *delims);
+int get_word_count(char *str, char *delims);
+char *get_next_word(char *str, char *delims);
+unsigned int _abs(int n);
 
 void free_stack(stack_t **stack);
 int init(stack_t **stack);

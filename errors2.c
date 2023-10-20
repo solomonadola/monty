@@ -3,6 +3,9 @@
 
 int is_empty_line(char *line, char *delims);
 void (*get_op_func(char *opcode))(stack_t**, unsigned int);
+void free_stack(stack_t **stack);
+int init(stack_t **stack);
+void tokens(void);
 
 /**
  * is_empty_line - checks if a line from getline only has delimiters
@@ -68,4 +71,63 @@ void (*get_op_func(char *opcode))(stack_t**, unsigned int)
 			return (op_funcs[i].f);
 	}
 	return (NULL);
+}
+
+/**
+ * free_stack - Frees a stack_t stack.
+ * @stack: A pointer to the top (stack) or bottom (queue) of a stack_t.
+ **/
+
+void free_stack(stack_t **stack)
+{
+	stack_t *temp = *stack;
+	
+	while (*stack)
+	{
+		temp = (*stack)->next;
+		free(*stack);
+		*stack = temp;
+	}
+}
+
+
+/**
+ * init - Initializes a stack_t stack with beginning
+ * stack and ending queue nodes.
+ * @stack: A pointer to an unitialized stack_t stack.
+ *
+ * Return: If an error occurs - EXIT_FAILURE.
+ * Otherwise - EXIT_SUCCESS.
+ **/
+
+int init(stack_t **stack)
+{
+	stack_t *i;
+	
+	i = malloc(sizeof(stack_t));
+	
+	if (i == NULL)
+		return (malloc_err());
+	i->n = STACK;
+	i->prev = NULL;
+	i->next = NULL;
+	*stack = i;
+	
+	return (EXIT_SUCCESS);
+}
+
+/**
+ * tokens - Frees the global tok array of strings.
+ *
+ **/
+
+void tokens(void)
+{
+	size_t d = 0;
+	
+	if (tok == NULL)
+		return;
+	for (d = 0; tok[d]; d++)
+		free(tok[d]);
+	free(tok);
 }
