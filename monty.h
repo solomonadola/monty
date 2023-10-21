@@ -78,7 +78,7 @@ void set_op_tok_error(int error_code);
 
 
 void push(stack_t **head, unsigned int counter);
-void pall(stack_t **head, unsigned int counter);
+void f_pall(stack_t **head, unsigned int counter);
 void pint(stack_t **head, unsigned int counter);
 void pop(stack_t **head, unsigned int counter);
 void swap(stack_t **head, unsigned int counter);

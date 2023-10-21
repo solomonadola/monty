@@ -72,7 +72,7 @@ int open_err(char *filename)
  * retur: EXIT_SUCCESS on success, error on failure
  */
 
-int run_monty(FILE *script_fd)
+int run(FILE *script_fd)
 {
 	stack_t *stack = NULL;
 	char *line = NULL;
